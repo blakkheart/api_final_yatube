@@ -1,48 +1,47 @@
-# api_final
+# Проект API для социальной сети Yatube
 
-api_final is a Python DRF API for yatube project (front-end is not included).
+### Описание
+Незарегистрированные пользователи могут просматривать посты, комментарии, группы.
+Для зарегистрированных пользователей доступны подписка на понравившихся авторов,
+добавление постов, комментариев, а также удаление и редактирование собственных публикаций
+и комментариев.
 
-## Installation
+### Как запустить проект:
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install api_final's dependencies.
-
-```bash
-(venv) pip install -r requirements.txt
+Клонировать репозиторий, cоздать и активировать виртуальное окружение:
+```
+python3 -m venv venv
 ```
 
-## Usage
+* Если у вас Linux/macOS:
+    ```
+    source env/bin/activate
+    ```
 
-```python
-
-# returns all posts
-'GET' request to /api/v1/posts/
-# output example JSON:
-{
-  "count": 123,
-  "next": "http://api.example.org/accounts/?offset=400&limit=100",
-  "previous": "http://api.example.org/accounts/?offset=200&limit=100",
-  "results": [
-    {
-      "id": 0,
-      "author": "string",
-      "text": "string",
-      "pub_date": "2021-10-14T20:41:29.648Z",
-      "image": "string",
-      "group": 0
-    }
-  ]
-}
-
-# you can see all allowed requests and examples in <static/redoc.yaml>
+* Если у вас Windows:
+    ```
+    source venv/scripts/activate
+    ```
+Обновить [pip](https://pip.pypa.io/en/stable/):
+```
+python3 -m pip install --upgrade pip
 ```
 
-## Contributing
+Установить зависимости из файла requirements.txt:
+```
+pip install -r requirements.txt
+```
 
-Pull requests are welcome. For major changes, please open an issue first
-to discuss what you would like to change.
+Выполнить миграции:
+```
+(venv) python3 manage.py migrate
+```
 
-Please make sure to update tests as appropriate.
+Запустить проект:
+```
+(venv) python3 manage.py runserver
+```
 
-## License
+API будет доступно по дефолтному адресу 127.0.0.1.
 
-[YaPracticum](https://practicum.yandex.ru)
+Посмотреть доступные эндопинты можно в докуентации, находящейся в yatube_api/static/redoc.yaml
